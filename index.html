@@ -23,13 +23,14 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
-    <button>Clear All</button>
+    <button class="reset-items" type="submit" value="clear">Clear All</button>
   </div>
 
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [];
+  const resetItems = document.querySelector('.reset-items');
 
   function addItem(e) {
     e.preventDefault();
@@ -72,9 +73,19 @@
     populateList(items, itemsList);
   }
 
+  function eraseItems(e) {
+    debugger;
+    console.table(items);
+    localStorage.clear();
+    console.table(items);
+    //does not yet reset the page.
+  }
+
 
   addItems.addEventListener('submit', addItem);
   itemsList.addEventListener('click', toggleDone);
+  resetItems.addEventListener('click', eraseItems);
+
   populateList(items, itemsList);
 </script>
 
