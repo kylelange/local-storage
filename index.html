@@ -23,7 +23,8 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
-    <button class="reset-items" type="submit" value="clear">Clear All</button>
+    <button class="reset-items" type="submit">Clear All</button>
+    <!-- to reset the page I can also put: value="Refresh Page" onClick="window.location.reload()" -->
   </div>
 
 <script>
@@ -74,11 +75,9 @@
   }
 
   function eraseItems(e) {
-    debugger;
-    console.table(items);
+    console.log(items);
     localStorage.clear();
-    console.table(items);
-    //does not yet reset the page.
+    window.location.reload();
   }
 
 
