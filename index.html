@@ -38,8 +38,24 @@
       text: text,
       //es6 shortcut: just --> text,
       done: false
-    }
-    console.log(item)
+    };
+    items.push(item);
+    populateList(items, itemsList);
+    this.reset();
+    //console.table(items);
+  }
+
+  //put user items in HTML (and make it persist on refresh!)
+
+  function populateList(items = [], itemsList) {
+    itemsList.innerHTML = items.map((item, i) => {
+      return`
+        <li>
+          <label for="">${item.text}</label>
+        </li>
+      `;
+    }).join('');
+    //.join(); is what give me one string, rather than an array of separate strings.
   }
 
   addItems.addEventListener('submit', addItem);
