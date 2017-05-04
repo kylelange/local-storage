@@ -23,6 +23,7 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
+    <button>Clear All</button>
   </div>
 
 <script>
@@ -60,9 +61,20 @@
     //.join(); is what give me one string, rather than an array of separate strings.
   }
 
+  function toggleDone(e) {
+    //this is the event delegator.
+    if (!e.target.matches('input')) return;
+    const el = e.target
+    //console.log(el.dataset.index);
+    const index = el.dataset.index;
+    items[index].done = !items[index].done;
+    localStorage.setItem('items', JSON.stringify(items));
+    populateList(items, itemsList);
+  }
+
 
   addItems.addEventListener('submit', addItem);
-
+  itemsList.addEventListener('click', toggleDone);
   populateList(items, itemsList);
 </script>
 
