@@ -28,39 +28,42 @@
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const items = [];
+  const items = JSON.parse(localStorage.getItem('items')) || [];
 
   function addItem(e) {
     e.preventDefault();
-    //console.log('Hello');
     const text = (this.querySelector('[name=item]')).value;
     const item = {
       text: text,
       //es6 shortcut: just --> text,
       done: false
     };
+
     items.push(item);
     populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));
     this.reset();
     //console.table(items);
   }
 
   //put user items in HTML (and make it persist on refresh!)
 
-  function populateList(items = [], itemsList) {
-    itemsList.innerHTML = items.map((item, i) => {
-      return`
+  function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map((plate, i) => {
+      return `
         <li>
-          <input type="checkbox" data-index=${i} id="item${i}" ${item.done ? 'checked' : ''}/>
-          <label for="item${i}">${item.text}</label>
+          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+          <label for="item${i}">${plate.text}</label>
         </li>
       `;
     }).join('');
     //.join(); is what give me one string, rather than an array of separate strings.
   }
 
+
   addItems.addEventListener('submit', addItem);
 
+  populateList(items, itemsList);
 </script>
 
 
