@@ -1,15 +1,23 @@
-# _Title_
+# _Local Storage_
 
-#### _{Description Here}, {DATE}_
+#### _using the local storage inherent in browsers to persist state, May 5th_
 
 #### By _**Kyle Lange**_
 
-![screenshot](Screen Shot.png)
+![screenshot](local-screen.png)
 
 
 ## Learnings
 
-*
+* React.js-like persistent state on browser refresh by using localStorage
+
+* use the .innerHTML() function to stet up a React.js-like return.  Unlike react, though it does not reload only the single instance needed, but the whole return section.  In this case, all the up checkboxes.
+
+* persistent checkboxes by making each item an object with a key/value boolean - THEN each item gets pushed into an array of items.
+
+* checkboxes change value with a react-like:  this = !this toggle
+
+* uses a button to clear all entries from localStorage by .clear() and reloading the page with window.location.reload();
 
 
 
@@ -25,15 +33,12 @@
 
 _There are no known bugs as of the last commit. Please send an ISSUE on github in the repository if you see something I have not._
 
-## Support and contact details
-
-For questions or comments, please __email  [Kyle here.](baronsintrees@gmail.com)__
 
 ## Technologies Used
 
 * HTML5
-* CSS3 with Bootstrap 3
-* JavaScript
+* CSS3
+* Vanilla JavaScript
 
 ### License
 
